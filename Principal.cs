@@ -7,28 +7,32 @@ namespace libreria
 
     class Pricipal{
         static void Main(){
-
+            List<Persona> listaPersona = new List<Persona>();
             string opcion = mostrarMenu();
 
             while ( opcion != "9") {
 
-            if (opcion == "1"){
+                switch ( opcion ) 
+                {
+                    case "1":
+                    listaPersona.Add(crearPersona());
+                    break;
+                    case "2":
+                    mostrarPersona(listaPersona);
+                    break;
 
-                crearPersona();
-            } 
-            else
-            {
-                Console.WriteLine("Opción Incorrecta...");
-                Console.ReadKey();
+                    default:
+                    Console.WriteLine("Opcion incorrecta");
+                    Console.ReadKey();
+                    break;
+                    
+                }
             }
-
-            opcion = mostrarMenu();
-
-            }
+                opcion = mostrarMenu();
 
         }
 
-         public static void crearPersona(){
+         public static Persona crearPersona(){
 
             Console.Clear();
             Persona p1 = new Persona();
@@ -50,6 +54,7 @@ namespace libreria
             Console.Write("Ingrese Fecha Nacimiento: ");
             p1.FechaNacimiento = Console.ReadLine();
 
+            return p1;
         }
 
 
@@ -65,6 +70,8 @@ namespace libreria
             Console.WriteLine("");
             Console.WriteLine("1.- Crear Alumno");
             Console.WriteLine("");
+            Console.WriteLine("2.-Mostrar lista");
+            Console.WriteLine("");
             Console.Write("Elija una opción: ");
 
             opcion = Console.ReadLine();
@@ -73,6 +80,19 @@ namespace libreria
 
 
         }
+
+        public static void mostrarPersona(List<Persona>personas)
+        {
+            foreach (var elem in personas)
+            {
+                Console.WriteLine("Apellido");
+                Console.WriteLine(elem.Apellido);
+                Console.WriteLine(elem.Apellido);
+                Console.WriteLine(elem.Apellido);
+                Console.WriteLine(elem.Apellido);
+            }
+        }
+
     }
 
 
